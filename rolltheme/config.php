@@ -21,5 +21,21 @@ $config = array(
 				'common-js' => 'js/common.js'
 			)
 		)
+	),
+
+	'support' => array(
+		'menu' => true,
+	),
+
+	'post_types' => array(
+
+	),
+
+	'metaboxes' => array(
+
+	),
+
+	'taxonomy' => array(
+
 	)
 );

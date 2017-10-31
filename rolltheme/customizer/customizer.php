@@ -42,7 +42,16 @@ function roll_customizer( $wp_customize ) {
 				$control['settings'] = $item;
 				$control['choices'] = array( 'left'  => 'left', 'right' => 'right' );
 
-				$wp_customize->add_control($item . '_input', $control );
+				switch ( $control['type'] ) {
+					case 'image' : {
+						$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $item . '_input', $control ) );
+						break;
+					}
+
+					default : {
+						$wp_customize->add_control($item . '_input', $control );
+					}
+				}
 			}
 		}
 	}

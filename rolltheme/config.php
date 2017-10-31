@@ -7,15 +7,11 @@ $config = array(
 				'main-style' => 'css/main.css'
 			),
 
-			'js' => array(
-
-			)
+			'js' => array()
 		),
 
 		'footer' => array(
-			'css' => array(
-
-			),
+			'css' => array(),
 
 			'js' => array(
 				'common-js' => 'js/common.js'
@@ -24,18 +20,30 @@ $config = array(
 	),
 
 	'support' => array(
-		'menu' => true,
+		'menu'       => true,
+		'customizer' => true
 	),
 
-	'post_types' => array(
-
+	'customizer' => array(
+		'section_id' => array(
+			'title'    => 'section title',
+			'priority' => 1,
+			'items'    => array(
+				'setting_key' => array(
+					'default'   => '',
+					'transport' => 'refresh',
+					'field'     => array(
+						'label' => 'name',
+						'type'  => 'text'
+					)
+				)
+			)
+		),
 	),
 
-	'metaboxes' => array(
+	'post_types' => array(),
 
-	),
+	'metaboxes' => array(),
 
-	'taxonomy' => array(
-
-	)
+	'taxonomy' => array()
 );

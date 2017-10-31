@@ -19,6 +19,11 @@ function roll_support_options() {
 					add_theme_support( 'menus' );
 				continue;
 			}
+
+			case 'customizer' : {
+				if ( $support['customizer'] === true )
+					add_action('customize_register', 'roll_customizer');
+			}
 		}
 	}
 }

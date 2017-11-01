@@ -23,6 +23,13 @@ function roll_support_options() {
 			case 'customizer' : {
 				if ( $support['customizer'] === true )
 					add_action('customize_register', 'roll_customizer');
+				continue;
+			}
+
+			case 'thumbnails' : {
+				if ($support['thumbnails'] === true)
+					add_theme_support( 'post-thumbnails' );
+				continue;
 			}
 		}
 	}

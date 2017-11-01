@@ -21,7 +21,8 @@ $config = array(
 
 	'support' => array(
 		'menu'       => true,
-		'customizer' => true
+		'customizer' => true,
+		'thumbnails' => true
 	),
 
 	'customizer' => array(
@@ -41,7 +42,20 @@ $config = array(
 		),
 	),
 
-	'post_types' => array(),
+	'post_types' => array(
+		'post_type_name' => array(
+			'options' => array(
+
+			),
+			'labels' => array(
+				'name' => 'My post types',
+				'singular' => 'My post type',
+				'edit' => array(
+
+				)
+			)
+		)
+	),
 
 	'metaboxes' => array(),
 

@@ -5,12 +5,15 @@ class Roll_theme_options {
 
 	private $optionsName = 'roll_theme_options';
 	private $pageTitle = 'Theme options';
-	private $pageSlug = 'theme-options.php';
+	private $pageSlug = 'theme-options';
+    private $screen = 'appearance_page_';
 
 	public function __construct() {
+	    $this->screen .= $this->pageSlug;
 		Roll_theme_options_controls::setOptionsName($this->optionsName);
-		$this->load_assets();
+        $this->load_assets();
 		$this->setHooks();
+
 	}
 
     private function setHooks() {
@@ -23,7 +26,6 @@ class Roll_theme_options {
 	}
 
 	public function createPageCallback() {
-
 		?>
 		<div class="wrap">
             <div class="head">
@@ -32,11 +34,28 @@ class Roll_theme_options {
             </div>
             <form action="options.php" method="post" enctype="multipart/form-data">
                 <div class="white-container">
-                    <?php
-                        settings_fields($this->optionsName);
-                        do_settings_sections($this->pageSlug);
-                    ?>
-                    <?php submit_button() ?>
+                    <div class="tabs-container">
+                        <div class="tabs">
+                            <ul class="theme-options-menu">
+                                <li class="tab-link" data-tab-id="1">
+                                    <a href="javascript:void(0)"><i class="fa fa-address-book" aria-hidden="true"></i> Header</a>
+                                    <ul class="sub-tabs">
+                                        <li class="tab-link"><a href="javascript:void(0)">Social links</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content" data-content-id="1">
+                            <div class="top">
+                                Content...
+		                        <?php
+		                        settings_fields( $this->optionsName );
+		                        do_settings_sections( $this->pageSlug );
+		                        ?>
+                            </div>
+	                        <div class="bottom"><?php submit_button() ?></div>
+                        </div>
+                    </div>
                 </div>
             </form>
 		</div>
@@ -50,7 +69,10 @@ class Roll_theme_options {
 	}
 
 	 public function load_assets() {
+	    Roll_assets_admin::setShowOn([$this->screen]);
+	    Roll_assets_admin::add_style('fontawesome', 'font-awesome.min.css');
 	    Roll_assets_admin::add_style('roll-theme-options-style', 'theme-options.css');
+	    Roll_assets_admin::add_script( 'roll-theme-options-script', 'theme-options.js', true );
      }
 
 

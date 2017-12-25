@@ -11,6 +11,7 @@ class Roll_assets_admin {
 
 	private static $css = array();
 	private static $js = array();
+	private static $showOn = array();
 
 	public function __construct() {
 		$this->start();
@@ -21,16 +22,22 @@ class Roll_assets_admin {
 	}
 
 	public function parse() {
-		if (!empty(self::$css)) {
-			foreach (self::$css as $key => $dir) {
-				wp_enqueue_style($key, get_template_directory_uri() . self::ASSETS_DIR . 'css/' . $dir);
+		if ( in_array( get_current_screen()->id, self::$showOn ) ) {
+			if ( ! empty( self::$css ) ) {
+				foreach ( self::$css as $key => $dir ) {
+					wp_enqueue_style( $key, get_template_directory_uri() . self::ASSETS_DIR . 'css/' . $dir );
+				}
 			}
-		}
 
-		if (!empty(self::$js)) {
-			foreach (self::$js as $id => $params) {
-				wp_enqueue_script($id, get_template_directory_uri() . self::ASSETS_DIR . 'js/' . $params['file'],
-					array(), null, $params['in_footer']);
+			if ( ! empty( self::$js ) ) {
+				foreach ( self::$js as $id => $params ) {
+					if ( $params['file'] != '' ) {
+						wp_enqueue_script( $id, get_template_directory_uri() . self::ASSETS_DIR . 'js/' . $params['file'],
+							array(), null, $params['in_footer'] );
+					} else {
+						wp_enqueue_script( $id );
+					}
+				}
 			}
 		}
 	}
@@ -44,7 +51,15 @@ class Roll_assets_admin {
 		self::$css[$id] = $file;
 	}
 
-	public static function add_script($id, $file, $in_footer = false) {
+	public static function add_script($id, $file = '', $in_footer = false) {
 		self::$js[$id] = array('file' => $file, 'in_footer' => $in_footer);
+	}
+
+	public static function setShowOn($params) {
+		self::$showOn = array_merge(self::$showOn,$params);
+	}
+
+	public static function getShowOn() {
+		return self::$showOn;
 	}
 }

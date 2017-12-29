@@ -7,8 +7,14 @@ class Roll_theme_options {
 	private $pageTitle = 'Theme options';
 	private $pageSlug = 'theme-options';
     private $screen = 'appearance_page_';
+    private $options;
+    private $optionsTree = array();
 
 	public function __construct() {
+	    global $config;
+        $this->options = $config['theme_options'];
+        $this->optionsTree = $this->reformatOptions();
+
 	    $this->screen .= $this->pageSlug;
 		Roll_theme_options_controls::setOptionsName($this->optionsName);
         $this->load_assets();
@@ -25,6 +31,51 @@ class Roll_theme_options {
 		add_theme_page($this->pageTitle, $this->pageTitle, 'manage_options', $this->pageSlug, array($this, 'createPageCallback'));
 	}
 
+	private function reformatOptions() {
+	    $options = $this->options;
+	    $formarted = array();
+	    $section_id = null;
+	    foreach ($options as $id => $option) {
+            if (!array_key_exists('sub', $option) || $option['sub'] === false) {
+                $section_id = $id;
+                $formarted[$section_id] = $option;
+            }else {
+                if ($option['sub'] === true) {
+                    $formarted[$section_id]['subs'][$id] = $option;
+                }
+            }
+        }
+
+       return $formarted;
+    }
+
+	private function getBulidTabs() {
+	    $html = '';
+	    $class = '';
+        $icon = '';
+	    foreach ($this->optionsTree as $sectionName => $section) {
+	        $class = isset($section['subs']) && !empty($section['subs']) ? ' has-sub' : '';
+	        $icon = isset($section['icon']) ? '<i class="fa '.$section['icon'].'"></i> ' : '';
+
+	        $html .= '<li class="tab-link'.$class.'" data-tab-id="'.$sectionName.'">';
+	        $html .= '<a href="javascript:void(0)">'.$icon.$section['title'].'</a>';
+
+	        if (isset($section['subs']) && !empty($section['subs'])) {
+		        $html .= '<ul class="sub-tabs">';
+		        foreach ($section['subs'] as $subName => $sub) {
+	                $html .= '<li class="tab-link" data-tab-id="'. $subName .'"><a href="javascript:void(0)">'.$sub['title'].'</a></li>';
+                }
+		        $html .= '</ul>';
+	        }
+
+            $html .= '</li>';
+
+        }
+
+
+        return $html;
+    }
+
 	public function createPageCallback() {
 		?>
 		<div class="wrap">
@@ -37,12 +88,7 @@ class Roll_theme_options {
                     <div class="tabs-container">
                         <div class="tabs">
                             <ul class="theme-options-menu">
-                                <li class="tab-link" data-tab-id="1">
-                                    <a href="javascript:void(0)"><i class="fa fa-address-book" aria-hidden="true"></i> Header</a>
-                                    <ul class="sub-tabs">
-                                        <li class="tab-link"><a href="javascript:void(0)">Social links</a></li>
-                                    </ul>
-                                </li>
+                                <?php echo $this->getBulidTabs() ?>
                             </ul>
                         </div>
                         <div class="tab-content" data-content-id="1">

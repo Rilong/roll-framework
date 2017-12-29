@@ -37,6 +37,23 @@ $main_color: #554935;
       .theme-options-menu {
         margin: 0;
         li {
+          position: relative;
+          margin: 0;
+          border-bottom: 1px solid lighten($main_color, 20%);
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          &.has-sub > a::before {
+            content: '\f107';
+            position: absolute;
+            font-family: FontAwesome, sans-serif;
+            font-size: 24px;
+            color: #fff;
+
+            right: 10px;
+          }
           a {
             background-color: lighten($main_color, 15%);
             display: block;

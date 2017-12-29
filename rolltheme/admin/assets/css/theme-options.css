@@ -6,6 +6,9 @@
 .wrap .tabs-container { display: flex; min-height: 500px; }
 .wrap .tabs-container .tabs { width: 15%; background-color: #554935; }
 .wrap .tabs-container .tabs .theme-options-menu { margin: 0; }
+.wrap .tabs-container .tabs .theme-options-menu li { position: relative; margin: 0; border-bottom: 1px solid #947f5c; }
+.wrap .tabs-container .tabs .theme-options-menu li:last-child { border-bottom: none; }
+.wrap .tabs-container .tabs .theme-options-menu li.has-sub > a::before { content: '\f107'; position: absolute; font-family: FontAwesome, sans-serif; font-size: 24px; color: #fff; right: 10px; }
 .wrap .tabs-container .tabs .theme-options-menu li a { background-color: #847152; display: block; color: #fff; text-decoration: none; font-size: 16px; padding: 10px 20px; outline: none; box-shadow: none; transition: background-color, .3s ease; }
 .wrap .tabs-container .tabs .theme-options-menu li a:hover { background-color: #7e6c4e; }
 .wrap .tabs-container .tabs .theme-options-menu li .sub-tabs { display: none; }

@@ -44,17 +44,72 @@ $config = array(
 
 	'post_types' => array(
 		'post_type_name' => array(
-			'options' => array(
-
-			),
-			'labels' => array(
-				'name' => 'My post types',
+			'options' => array(),
+			'labels'  => array(
+				'name'     => 'My post types',
 				'singular' => 'My post type',
-				'edit' => array(
-
-				)
+				'edit'     => array()
 			)
 		)
+	),
+
+	'theme_options' => array(
+		'section1' => array(
+			'title'   => 'Header',
+			'icon'    => 'fa-address-book',
+			'options' => array(
+				'header_test' => array(
+					'type'  => 'text',
+					'std'   => 'Default text',
+					'label' => 'text type'
+				)
+			)
+		),
+		'section2' => array(
+			'title'   => 'Header #2',
+			'sub'     => true,
+			'options' => array(
+				'header_test' => array(
+					'type'  => 'text',
+					'std'   => 'Default text',
+					'label' => 'text type'
+				)
+			),
+		),
+		'section3' => array(
+			'title'   => 'Header #3',
+			'sub'     => true,
+			'options' => array(
+				'header_test' => array(
+					'type'  => 'text',
+					'std'   => 'Default text',
+					'label' => 'text type'
+				)
+			),
+		),
+		'section4' => array(
+			'title'   => 'Header #4',
+			'sub'     => false,
+			'icon'    => 'fa-address-card',
+			'options' => array(
+				'header_test' => array(
+					'type'  => 'text',
+					'std'   => 'Default text',
+					'label' => 'text type'
+				)
+			),
+		),
+		'section5' => array(
+			'title'   => 'Header #5',
+			'sub'     => true,
+			'options' => array(
+				'header_test' => array(
+					'type'  => 'text',
+					'std'   => 'Default text',
+					'label' => 'text type'
+				)
+			),
+		),
 	),
 
 	'metaboxes' => array(),

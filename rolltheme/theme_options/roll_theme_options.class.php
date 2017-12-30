@@ -95,7 +95,7 @@ class Roll_theme_options {
     }
 
 	public function createPageCallback() {
-		?>
+	    ?>
 		<div class="wrap">
             <div class="head">
                 <h2>Theme options</h2>
@@ -103,8 +103,10 @@ class Roll_theme_options {
             </div>
             <form action="options.php" method="post" enctype="multipart/form-data">
                 <?php
+                wp_nonce_field($this->optionsName);
                 settings_fields( $this->optionsName );
                 do_settings_sections( $this->pageSlug ); ?>
+
                 <div class="white-container">
                     <div class="tabs-container">
                         <div class="tabs">
@@ -126,7 +128,7 @@ class Roll_theme_options {
 
 	public function registerOptions() {
 		// Register the settings with Validation callback
-		register_setting( $this->pageTitle, $this->optionsName );
+		register_setting( $this->optionsName, $this->optionsName );
 
 	}
 

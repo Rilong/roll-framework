@@ -10,6 +10,7 @@ class Roll_theme_options_controls {
 	private static $optionsName = null;
 
 	public static function getControl($type, $params) {
+		$options = get_option(self::$optionsName);
 		$html = '';
 		$attrName = '';
 
@@ -25,7 +26,7 @@ class Roll_theme_options_controls {
                                 <label for="text">'.$params['label'].'</label>
                                 <div class="roll-desc">'.$params['desc'].'</div>
                             </th>
-                            <td><input type="text" id="text" name="'. $attrName .'" class="roll-text"></td>
+                            <td><input type="text" id="text" name="'. $attrName .'" value="'. $options[$params['id']] .'" class="roll-text"></td>
                           </tr>';
 				return 	$html;
 			}

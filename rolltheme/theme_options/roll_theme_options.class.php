@@ -76,6 +76,24 @@ class Roll_theme_options {
         return $html;
     }
 
+    private function getBuildContent() {
+	    $html = '';
+	    foreach ($this->options as $sectionName => $section) {
+		    $html .= '<div class="tab-content" data-content-id="'.$sectionName.'">';
+		    $html .= '<h3>'. $section['title'] .'</h3>';
+
+		    if (isset($section['options']) && !empty($section['options'])) {
+			    $html .=  '<table class="table-options">';
+			    foreach ($section['options'] as $optionId => $option) {
+				    $option['id'] = $optionId;
+				    $html .= Roll_theme_options_controls::getControl($option['type'], $option);
+			    }
+			    $html .= '</table></div>';
+		    }
+	    }
+	    return $html;
+    }
+
 	public function createPageCallback() {
 		?>
 		<div class="wrap">
@@ -84,6 +102,9 @@ class Roll_theme_options {
                 <span>By Rilong</span>
             </div>
             <form action="options.php" method="post" enctype="multipart/form-data">
+                <?php
+                settings_fields( $this->optionsName );
+                do_settings_sections( $this->pageSlug ); ?>
                 <div class="white-container">
                     <div class="tabs-container">
                         <div class="tabs">
@@ -91,15 +112,10 @@ class Roll_theme_options {
                                 <?php echo $this->getBulidTabs() ?>
                             </ul>
                         </div>
-                        <div class="tab-content" data-content-id="1">
-                            <div class="top">
-                                Content...
-		                        <?php
-		                        settings_fields( $this->optionsName );
-		                        do_settings_sections( $this->pageSlug );
-		                        ?>
-                            </div>
-	                        <div class="bottom"><?php submit_button() ?></div>
+                        <div class="options-content">
+	                        <div class="top"><?php echo $this->getBuildContent() ?></div>
+                            <div class="bottom"><?php submit_button() ?></div>
+
                         </div>
                     </div>
                 </div>

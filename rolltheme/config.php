@@ -58,57 +58,31 @@ $config = array(
 			'title'   => 'Header',
 			'icon'    => 'fa-address-book',
 			'options' => array(
-				'header_test' => array(
+				'header_test1' => array(
 					'type'  => 'text',
+					'label' => 'My text',
+					'desc'  => 'test',
 					'std'   => 'Default text',
-					'label' => 'text type'
+				),
+				'header_test2' => array(
+					'type'  => 'text',
+					'label' => 'My text 2',
+					'desc'  => 'test 2',
+					'std'   => 'Default text',
 				)
-			)
+			),
 		),
 		'section2' => array(
 			'title'   => 'Header #2',
-			'sub'     => true,
+			'icon'    => 'fa-address-book',
 			'options' => array(
-				'header_test' => array(
+				'header_test3' => array(
 					'type'  => 'text',
+					'label' => 'My text',
+					'desc'  => 'test #3',
 					'std'   => 'Default text',
-					'label' => 'text type'
-				)
-			),
-		),
-		'section3' => array(
-			'title'   => 'Header #3',
-			'sub'     => true,
-			'options' => array(
-				'header_test' => array(
-					'type'  => 'text',
-					'std'   => 'Default text',
-					'label' => 'text type'
-				)
-			),
-		),
-		'section4' => array(
-			'title'   => 'Header #4',
-			'sub'     => false,
-			'icon'    => 'fa-address-card',
-			'options' => array(
-				'header_test' => array(
-					'type'  => 'text',
-					'std'   => 'Default text',
-					'label' => 'text type'
-				)
-			),
-		),
-		'section5' => array(
-			'title'   => 'Header #5',
-			'sub'     => true,
-			'options' => array(
-				'header_test' => array(
-					'type'  => 'text',
-					'std'   => 'Default text',
-					'label' => 'text type'
-				)
-			),
+				),
+			)
 		),
 	),
 

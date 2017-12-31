@@ -75,6 +75,7 @@ $config = array(
 		'section2' => array(
 			'title'   => 'Header #2',
 			'icon'    => 'fa-address-book',
+			'sub'     => true,
 			'options' => array(
 				'header_test3' => array(
 					'type'  => 'text',

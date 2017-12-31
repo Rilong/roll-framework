@@ -31,10 +31,17 @@ $main_color: #554935;
   .tabs-container {
     display: flex;
     min-height: 500px;
+
+    form {
+      height: 100%;
+    }
     .tabs {
       width: 15%;
       background-color: $main_color;
-      .theme-options-menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .theme-options-menu, .system-tabs {
         margin: 0;
         li {
           position: relative;
@@ -88,12 +95,39 @@ $main_color: #554935;
         }
       }
     }
-    .options-content {
-      display: flex;
+    .system-content {
       width: calc(100% - 80px);
+      display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
+
+      .export-view {
+        padding: 20px;
+        width: 400px;
+        height: 200px;
+        background-color: #fafafa;
+        word-wrap: break-word;
+        margin-bottom: 20px;
+      }
+
+      .button {
+        font-size: 20px;
+        padding: 20px 10%;
+        line-height: normal;
+        height: auto;
+      }
+    }
+
+    .options-content {
+      width: calc(100% - 80px);
       padding: 20px;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
 
       h3 {
         font-size: 30px;

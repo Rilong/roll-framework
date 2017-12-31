@@ -7,5 +7,11 @@ jQuery(document).ready(function($) {
 
         if(submenu.length && elem.parents('.sub-tabs').length === 0)
             submenu.slideToggle(400);
-    })
+    });
+
+    $('.export-tab').on('click', function () {
+       $('.options-content').fadeOut(300, function () {
+           $('.system-content').fadeIn(300);
+       });
+    });
 });

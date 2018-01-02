@@ -20,13 +20,18 @@ class Roll_theme_options_controls {
 
 		switch ($type) {
 			case "text" : {
+				$value = '';
 				$attrName = self::$optionsName . '[' . $params['id'] . ']';
+
+				if (isset($options[$params['id']]))
+					$value = $options[$params['id']];
+
 				$html = '<tr>
                             <th>
                                 <label for="text">'.$params['label'].'</label>
                                 <div class="roll-desc">'.$params['desc'].'</div>
                             </th>
-                            <td><input type="text" id="text" name="'. $attrName .'" value="'. $options[$params['id']] .'" class="roll-text"></td>
+                            <td><input type="text" id="text" name="'. $attrName .'" value="'. $value .'" class="roll-text"></td>
                           </tr>';
 				return 	$html;
 			}

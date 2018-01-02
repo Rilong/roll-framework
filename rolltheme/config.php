@@ -58,13 +58,13 @@ $config = array(
 			'title'   => 'Header',
 			'icon'    => 'fa-address-book',
 			'options' => array(
-				'header_test1' => array(
+				'option1' => array(
 					'type'  => 'text',
 					'label' => 'My text',
 					'desc'  => 'test',
 					'std'   => 'Default text',
 				),
-				'header_test2' => array(
+				'option2' => array(
 					'type'  => 'text',
 					'label' => 'My text 2',
 					'desc'  => 'test 2',
@@ -77,9 +77,41 @@ $config = array(
 			'icon'    => 'fa-address-book',
 			'sub'     => true,
 			'options' => array(
-				'header_test3' => array(
+				'option3' => array(
 					'type'  => 'text',
 					'label' => 'My text',
+					'desc'  => 'test #3',
+					'std'   => 'Default text',
+				),
+			)
+		),
+
+		'section3' => array(
+			'title'   => 'Footer',
+			'icon'    => 'fa-address-book',
+			'options' => array(
+				'option4' => array(
+					'type'  => 'text',
+					'label' => 'My text 2',
+					'desc'  => 'test 2',
+					'std'   => 'Default text',
+				),
+				'option5' => array(
+					'type'  => 'text',
+					'label' => 'My text 2',
+					'desc'  => 'test 2',
+					'std'   => 'Default text',
+				)
+			),
+		),
+		'section4' => array(
+			'title'   => 'Footer #2',
+			'icon'    => 'fa-address-book',
+			'sub'     => true,
+			'options' => array(
+				'option6' => array(
+					'type'  => 'text',
+					'label' => 'My text 3',
 					'desc'  => 'test #3',
 					'std'   => 'Default text',
 				),

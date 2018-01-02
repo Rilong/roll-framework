@@ -28,6 +28,7 @@ class Roll_theme_options {
 
 	public function ajax() {
 		parse_str( $_POST['formData'], $formData );
+
 		$res = update_option( $this->optionsName, $formData[ $this->optionsName ] );
 
 		if ( $res ) {

@@ -123,6 +123,10 @@ $main_color: #554935;
       width: calc(100% - 80px);
       padding: 20px;
 
+      .tab-content {
+        display: none;
+      }
+
       form {
         display: flex;
         flex-direction: column;

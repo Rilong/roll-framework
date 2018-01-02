@@ -99,8 +99,15 @@ class Roll_theme_options {
 
 	private function getBuildContent() {
 		$html = '';
+		$display = '';
+		$i = 1;
 		foreach ( $this->options as $sectionName => $section ) {
-			$html .= '<div class="tab-content" data-content-id="' . $sectionName . '">';
+		    if ($i == 1)
+		        $display = ' style="display: block;"';
+            else
+                $display = '';
+
+			$html .= '<div class="tab-content" data-content-id="' . $sectionName . '"' . $display . '>';
 			$html .= '<h3>' . $section['title'] . '</h3>';
 
 			if ( isset( $section['options'] ) && ! empty( $section['options'] ) ) {
@@ -108,9 +115,13 @@ class Roll_theme_options {
 				foreach ( $section['options'] as $optionId => $option ) {
 					$option['id'] = $optionId;
 					$html .= Roll_theme_options_controls::getControl( $option['type'], $option );
+
+					$i++;
 				}
 				$html .= '</table></div>';
 			}
+
+			$i++;
 		}
 
 		return $html;

@@ -31,7 +31,8 @@ jQuery(document).ready(function ($) {
             },
             success: function (data) {
                 $('.export-view').text(data).fadeIn(300);
-                $(this).append('<a href="'+ roll_export_dir +'" download>Download JSON file</a>');
+                $('.system-content > a').remove();
+                $('.system-content').append('<a href="'+ roll_export_dir +'" download>Download JSON file</a>');
             },
             error: function () {
                 alert('ERROR!');

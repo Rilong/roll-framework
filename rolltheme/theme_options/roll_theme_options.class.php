@@ -104,10 +104,7 @@ class Roll_theme_options {
 		$class = '';
 		$icon  = '';
 
-		ob_start();
-		require ROLLTHEME_DIR . 'admin/templates/options-tabs.php';
-        $html = ob_get_clean();
-		return $html;
+		return $this->loadTemplate('options-tabs');
 	}
 
 	/*
@@ -117,20 +114,17 @@ class Roll_theme_options {
 	private function getBuildContent() {
 	    $html = null;
 		$display = '';
-		$i = 1;
 
-		ob_start();
-		require ROLLTHEME_DIR . 'admin/templates/options-content.php';
-		$html = ob_get_clean();
-
-		return $html;
+		return $this->loadTemplate('options-content');
 	}
 
 	/*
 	 * View options panel
 	 */
+
 	public function createPageCallback() {
-		require ROLLTHEME_DIR . 'admin/templates/options-panel.php';
+		$echo2 = 'hello';
+		$this->loadTemplate( 'options-panel', true );
 	}
 
 	/*
@@ -139,6 +133,26 @@ class Roll_theme_options {
 
 	public function registerOptions() {
 		register_setting( $this->optionsName, $this->optionsName );
+	}
+
+	/*
+	 * Load templates
+	 */
+
+	private function loadTemplate($filename, $echo = false) {
+		$html = null;
+		$file = ROLLTHEME_DIR . 'admin/templates/'. $filename .'.php';
+
+
+		if ($echo) {
+			require $file;
+		} else {
+			ob_start();
+			require $file;
+			$html = ob_get_clean();
+			return $html;
+		}
+		return true;
 	}
 
 	/*

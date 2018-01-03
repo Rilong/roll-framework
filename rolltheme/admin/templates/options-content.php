@@ -1,4 +1,7 @@
-<?php foreach ( $this->options as $sectionName => $section ) {
+<?php
+
+$i = 1;
+foreach ( $this->options as $sectionName => $section ) {
     if ( $i == 1 ) {
         $display = ' style="display: block;"';
     } else {

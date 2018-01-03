@@ -22,13 +22,12 @@ class Roll_theme_options_controls {
 		if (!$type && !is_string($type)) return false;
 		if (!is_array($params) || empty($params)) return false;
 
-
 		switch ($type) {
 			case "text" : {
 				$value = '';
 				$attrName = self::$optionsName . '[' . $params['id'] . ']';
 
-				if (isset($options[$params['id']]))
+				if (isset(self::$options[$params['id']]))
 					$value = self::$options[$params['id']];
 				$params['attrName'] = $attrName;
 

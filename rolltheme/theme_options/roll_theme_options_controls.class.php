@@ -8,9 +8,14 @@
 
 class Roll_theme_options_controls {
 	private static $optionsName = null;
+	private static $options = null;
+
+	/*
+	 * Get flied
+	 * @return string
+	 */
 
 	public static function getControl($type, $params) {
-		$options = get_option(self::$optionsName);
 		$html = '';
 		$attrName = '';
 
@@ -24,16 +29,10 @@ class Roll_theme_options_controls {
 				$attrName = self::$optionsName . '[' . $params['id'] . ']';
 
 				if (isset($options[$params['id']]))
-					$value = $options[$params['id']];
+					$value = self::$options[$params['id']];
+				$params['attrName'] = $attrName;
 
-				$html = '<tr>
-                            <th>
-                                <label for="text">'.$params['label'].'</label>
-                                <div class="roll-desc">'.$params['desc'].'</div>
-                            </th>
-                            <td><input type="text" id="text" name="'. $attrName .'" value="'. $value .'" class="roll-text"></td>
-                          </tr>';
-				return 	$html;
+				return 	self::textFlied($value, $params);
 			}
 
 			default : {
@@ -41,11 +40,36 @@ class Roll_theme_options_controls {
 			}
 		}
 	}
-	private static function textFlied($value = '') {
 
+	/*
+	 * Get input with type text
+	 * @return string
+	 */
+
+	private static function textFlied($value, $params) {
+		$html = '<tr>
+                    <th>
+                        <label for="text">'.$params['label'].'</label>
+                        <div class="roll-desc">'.$params['desc'].'</div>
+                    </th>
+                    <td><input type="text" id="text" name="'. $params['attrName'] .'" value="'. $value .'" class="roll-text"></td>
+                 </tr>';
+		return $html;
 	}
+
+	/*
+	 * Set options name
+	 */
 
 	public static function setOptionsName($name) {
 		self::$optionsName = $name;
+	}
+
+	/*
+	 * Set options
+	 */
+
+	public static function setOptions($options) {
+		self::$options = $options;
 	}
 }

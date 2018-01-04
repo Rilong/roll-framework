@@ -14,7 +14,6 @@
 			</div>
 			<div class="options-content">
 				<form id="roll-form" action="options.php" method="post" enctype="multipart/form-data">
-                    <input type="text" name="color" class="roll-colorpicker">
 					<div class="top">
 						<?php
 						settings_fields( $this->optionsName );

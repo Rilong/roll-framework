@@ -101,8 +101,6 @@ class Roll_theme_options {
 
 	private function getBuildTabs() {
 		$html  = null;
-		$class = '';
-		$icon  = '';
 
 		return $this->loadTemplate('options-tabs');
 	}
@@ -113,7 +111,6 @@ class Roll_theme_options {
 
 	private function getBuildContent() {
 	    $html = null;
-		$display = '';
 
 		return $this->loadTemplate('options-content');
 	}

@@ -30,7 +30,6 @@ class Roll_theme_options {
 		$this->load_assets();
 		$this->setHooks();
 		$this->export = new Roll_theme_options_export($this->optionsName);
-
 	}
 
 	/*
@@ -162,10 +161,12 @@ class Roll_theme_options {
 	public function load_assets() {
 		Roll_assets_admin::setShowOn( [ $this->screen ] );
 		Roll_assets_admin::add_style( 'fontawesome', 'font-awesome.min.css' );
-		Roll_assets_admin::add_style( 'roll-theme-options-style', 'theme-options.css' );
 		Roll_assets_admin::add_style( 'rcswitcher-style', 'rcswitcher.min.css' );
+		Roll_assets_admin::add_style( 'colorpicker-style', 'colorpicker.css' );
+		Roll_assets_admin::add_style( 'roll-theme-options-style', 'theme-options.css' );
 
 		Roll_assets_admin::add_script( 'rcswitcher-script', 'rcswitcher-4.0.min.js', true );
+		Roll_assets_admin::add_script( 'colorpicker-script', 'colorpicker.js', true );
 		Roll_assets_admin::add_script( 'roll-theme-options-script', 'theme-options.js', true );
 		Roll_assets_admin::add_script( 'roll-theme-options-ajax', 'ajax.js', true );
 	}

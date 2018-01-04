@@ -34,6 +34,17 @@ jQuery(document).ready(function($) {
 
     $('.roll-switcher').rcSwitcher();
 
+    $('.roll-colorpicker').each(function () {
+        var $this = $(this);
+            $(this).ColorPicker({
+                onChange: function(hsb, hex, rgb) {
+                    var color = '#' + hex;
+                    $this.val(color);
+                }
+            });
+    });
+
+
     function showContent(elem) {
         var data_id = elem.parents('li').data('tabId');
         var selectorContent = '.tab-content[data-content-id="' + data_id + '"]';

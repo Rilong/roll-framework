@@ -32,6 +32,8 @@ jQuery(document).ready(function($) {
        });
     });
 
+    $('.roll-switcher').rcSwitcher();
+
     function showContent(elem) {
         var data_id = elem.parents('li').data('tabId');
         var selectorContent = '.tab-content[data-content-id="' + data_id + '"]';

@@ -163,6 +163,9 @@ class Roll_theme_options {
 		Roll_assets_admin::setShowOn( [ $this->screen ] );
 		Roll_assets_admin::add_style( 'fontawesome', 'font-awesome.min.css' );
 		Roll_assets_admin::add_style( 'roll-theme-options-style', 'theme-options.css' );
+		Roll_assets_admin::add_style( 'rcswitcher-style', 'rcswitcher.min.css' );
+
+		Roll_assets_admin::add_script( 'rcswitcher-script', 'rcswitcher-4.0.min.js', true );
 		Roll_assets_admin::add_script( 'roll-theme-options-script', 'theme-options.js', true );
 		Roll_assets_admin::add_script( 'roll-theme-options-ajax', 'ajax.js', true );
 	}

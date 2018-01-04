@@ -58,6 +58,7 @@ class Roll_theme_options {
 		add_action( 'admin_init', array( $this, 'registerOptions' ) );
 		add_action( 'wp_ajax_roll_ajax', array( $this, 'saveAjax' ) );
 		add_action( 'switch_theme', array( $this, 'deactivateTheme' ) );
+		add_action( 'after_switch_theme', array( $this, 'activateTheme' ) );
 	}
 
 	/*
@@ -122,7 +123,6 @@ class Roll_theme_options {
 	 */
 
 	public function createPageCallback() {
-		$echo2 = 'hello';
 		$this->loadTemplate( 'options-panel', true );
 	}
 
@@ -172,10 +172,21 @@ class Roll_theme_options {
 	}
 
 	/*
+	 * Add options
+	 */
+
+	public function activateTheme() {
+		if ($options = $this->export->import()) {
+			add_option($this->optionsName, $options);
+		}
+	}
+
+	/*
 	 * Delete options
 	 */
 
 	public function deactivateTheme() {
+		$this->export->export();
 		delete_option( $this->optionsName );
 	}
 

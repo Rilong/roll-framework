@@ -9,16 +9,16 @@
 class Roll_theme_options_export {
 
 	private $optionsName;
+    private $dataDir;
 
-	public function __construct($optionsName) {
+    public function __construct($optionsName) {
+        $this->dataDir = get_template_directory() .'/export/data.json';
 		$this->optionsName = $optionsName;
 		$this->setHooks();
 	}
 
 	public function ajaxExport() {
-		$json = json_encode(get_option($this->optionsName));
-		file_put_contents(get_template_directory() .'/export/data.json', $json);
-		$res = $json;
+		$res = $this->export();
 		echo $res;
 		die;
 	}
@@ -53,6 +53,23 @@ class Roll_theme_options_export {
 		</div>
 		<?php
 	}
+
+	public function export() {
+		$json = json_encode(get_option($this->optionsName));
+		file_put_contents($this->dataDir, $json);
+        return $json;
+	}
+
+	public function import() {
+        $data = null;
+        if (file_exists($this->dataDir)) {
+            $data = file_get_contents($this->dataDir);
+            if (strlen($data) != 0) {
+                return json_decode($data, true);
+            }
+        }
+        return false;
+    }
 
 	public function add_script() {
 		echo '<script type="text/javascript">var roll_export_dir = "'. get_template_directory_uri(). '/export/data.json' .'"</script>';

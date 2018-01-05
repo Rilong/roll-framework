@@ -30,9 +30,7 @@ class Roll_theme_options_export {
 
 	public function BuildSysTab() {
 		?>
-		<ul class="system-tabs">
 			<li class="tab-link export-tab"><a href="javascript:void(0)">Export</a></li>
-		</ul>
 		<?php
 	}
 

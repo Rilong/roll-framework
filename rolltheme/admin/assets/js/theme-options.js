@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    $('.theme-options-menu > .tab-link').on('click', function (event) {
+    $('.theme-options-menu > .tab-link, .system-tabs > .tab-link').on('click', function (event) {
 
         var elem = $(event.target);
         var submenu = $(elem.parents('.tab-link')).find('.sub-tabs');

@@ -3,14 +3,6 @@ jQuery(document).ready(function($) {
 
         var elem = $(event.target);
         var submenu = $(elem.parents('.tab-link')).find('.sub-tabs');
-        var optionsContent = $('.options-content');
-        var systemContent = $('.system-content');
-
-        if (optionsContent.is(':hidden')) {
-            systemContent.fadeOut(300, function () {
-                optionsContent.fadeIn();
-            });
-        }
 
         showContent(elem);
 

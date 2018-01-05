@@ -11,7 +11,6 @@
 					<?php echo $this->getBuildTabs() ?>
 				</ul>
                 <ul class="system-tabs">
-    				<?php $this->export->BuildSysTab() ?>
                     <?php do_action('roll_system_tabs', $this->optionsName, $this->options) ?>
                 </ul>
 			</div>
@@ -27,7 +26,6 @@
 					<div class="bottom"><?php submit_button() ?></div>
 				</form>
 			</div>
-			<?php $this->export->BuildSysContent() ?>
 		</div>
 	</div>
 

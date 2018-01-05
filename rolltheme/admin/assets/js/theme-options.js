@@ -26,12 +26,6 @@ jQuery(document).ready(function($) {
             $(this).addClass('activeTab');
     });
 
-    $('.export-tab').on('click', function () {
-       $('.options-content').fadeOut(300, function () {
-           $('.system-content').fadeIn(300);
-       });
-    });
-
     $('.roll-switcher').rcSwitcher();
 
     $('.roll-colorpicker').each(function () {

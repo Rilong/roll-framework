@@ -33,8 +33,21 @@ jQuery(document).ready(function($) {
 
     function showContent(elem) {
         var data_id = elem.parents('li').data('tabId');
+        var tabContainer = elem.parents('ul');
         var selectorContent = '.tab-content[data-content-id="' + data_id + '"]';
         var elemContent = $(selectorContent);
+
+        if(tabContainer.is('.system-tabs') && $('#plugin-include').is(':hidden')) {
+            $('#root-include').hide();
+            $('#plugin-include').show();
+        }else {
+            if ($('#root-include').is(':hidden')) {
+                $('#root-include').show();
+                $('#plugin-include').hide();
+            }
+        }
+
+
 
         if(elemContent.is(':hidden')) {
             $('.tab-content').fadeOut(300);

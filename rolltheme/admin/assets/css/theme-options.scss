@@ -127,6 +127,11 @@ $main_color: #554935;
         display: none;
       }
 
+      #root-include,
+      #plugin-include {
+        height: 100%;
+      }
+
       form {
         display: flex;
         flex-direction: column;

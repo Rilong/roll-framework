@@ -46,9 +46,6 @@ jQuery(document).ready(function($) {
                 $('#plugin-include').hide();
             }
         }
-
-
-
         if(elemContent.is(':hidden')) {
             $('.tab-content').fadeOut(300);
             setTimeout(function () {
@@ -57,3 +54,29 @@ jQuery(document).ready(function($) {
         }
     }
 });
+function showMessage(message, typeError) {
+    var $ = jQuery;
+    var $message = $('.message-item');
+
+    if (typeError == 'successful') {
+        if ($message.is('.message-error'))
+            $message.removeClass('message-error');
+
+        $message.addClass('message-successful');
+        $message.text(message);
+        $message.addClass('active');
+        setTimeout(function () {
+            $message.removeClass('active');
+        }, 2000);
+    }else if (typeError == 'error') {
+        if ($message.is('.message-successful'))
+            $message.removeClass('message-successful');
+
+        $message.addClass('message-error');
+        $message.text(message);
+        $message.addClass('active');
+        setTimeout(function () {
+            $message.removeClass('active');
+        }, 2000);
+    }
+}

@@ -1,7 +1,15 @@
 .wrap .head { box-sizing: border-box; height: 100px; padding: 0 20px; background-color: #CCCCCC; display: flex; justify-content: space-between; align-items: center; }
 .wrap .head h2 { font-size: 18px; }
 .wrap .head span { font-weight: bold; font-size: 16px; }
-.wrap .white-container { background-color: #fff; }
+.wrap .white-container { background-color: #fff; position: relative; }
+.wrap .white-container .message-block { position: fixed; top: 167px; right: 20px; overflow: hidden; }
+.wrap .white-container .message-block .message-item { display: flex; position: relative; right: -200px; transition: all ease .4s; padding: 20px 25px 20px 25px; text-align: center; color: #fff; }
+.wrap .white-container .message-block .message-successful { background-color: rgba(38, 161, 0, 0.7); font-size: 18px; }
+.wrap .white-container .message-block .message-successful.active { right: 0; }
+.wrap .white-container .message-block .message-successful::before { content: '\f05d'; font-family: FontAwesome, sans-serif; margin-right: 10px; font-size: 30px; }
+.wrap .white-container .message-block .message-error { background-color: rgba(174, 3, 0, 0.7); font-size: 18px; }
+.wrap .white-container .message-block .message-error.active { right: 0; }
+.wrap .white-container .message-block .message-error::before { content: '\f06a'; font-family: FontAwesome, sans-serif; margin-right: 10px; font-size: 30px; }
 .wrap .submit { margin: 0; padding: 0; text-align: right; }
 .wrap .tabs-container { display: flex; min-height: 500px; }
 .wrap .tabs-container form { height: 100%; }

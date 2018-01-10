@@ -12,7 +12,11 @@ jQuery(document).ready(function ($) {
             },
             success: function (data) {
                 $('#submit').attr('disabled', false);
-                console.log(data);
+                data = parseInt(data);
+                if (data === 1)
+                    showMessage('Saved', 'successful');
+                else
+                    showMessage('Error', 'error')
             },
             error: function () {
                 alert('ERROR!');

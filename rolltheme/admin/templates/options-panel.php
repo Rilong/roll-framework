@@ -5,6 +5,9 @@
 	</div>
 
 	<div class="white-container">
+        <div class="message-block">
+            <div class="message-item">ok</div>
+        </div>
 		<div class="tabs-container">
 			<div class="tabs">
 				<ul class="theme-options-menu">

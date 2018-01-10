@@ -21,6 +21,51 @@ $main_color: #554935;
   }
   .white-container {
     background-color: #fff;
+    position: relative;
+    .message-block {
+      position: fixed;
+      top: 167px;
+      right: 20px;
+      overflow: hidden;
+
+      .message-item {
+        display: flex;
+        position: relative;
+        right: -200px;
+        transition: all ease .4s;
+        padding: 20px 25px 20px 25px;
+        text-align: center;
+        color: #fff;
+      }
+      .message-successful {
+        background-color: rgba(38, 161, 0, 0.7);
+        font-size: 18px;
+
+        &.active {
+          right: 0;
+        }
+        &::before {
+          content: '\f05d';
+          font-family: FontAwesome, sans-serif;
+          margin-right: 10px;
+          font-size: 30px;
+        }
+      }
+      .message-error {
+        background-color: rgba(174, 3, 0, 0.7);
+        font-size: 18px;
+
+        &.active {
+          right: 0;
+        }
+        &::before {
+          content: '\f06a';
+          font-family: FontAwesome, sans-serif;
+          margin-right: 10px;
+          font-size: 30px;
+        }
+      }
+    }
   }
   .submit {
     margin: 0;

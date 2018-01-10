@@ -42,9 +42,9 @@ class Roll_theme_options {
 		$res = update_option( $this->optionsName, $formData[ $this->optionsName ] );
 
 		if ( $res ) {
-			echo 'ok';
+			echo 1;
 		} else {
-			echo 'ERROR!';
+			echo 0;
 		}
 		die;
 	}

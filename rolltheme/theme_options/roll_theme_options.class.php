@@ -59,6 +59,8 @@ class Roll_theme_options {
 		add_action( 'wp_ajax_roll_ajax', array( $this, 'saveAjax' ) );
 		add_action( 'switch_theme', array( $this, 'deactivateTheme' ) );
 		add_action( 'after_switch_theme', array( $this, 'activateTheme' ) );
+		if (!is_admin())
+    		add_action( 'admin_bar_menu', array($this, 'add_in_admin_bar'), 50 );
 	}
 
 	/*
@@ -66,7 +68,7 @@ class Roll_theme_options {
 	 */
 
 	public function createPage() {
-		add_theme_page( $this->pageTitle, $this->pageTitle, 'manage_options', $this->pageSlug, array(
+		$this->options_uri = add_theme_page( $this->pageTitle, $this->pageTitle, 'manage_options', $this->pageSlug, array(
 			$this,
 			'createPageCallback'
 		) );
@@ -167,6 +169,20 @@ class Roll_theme_options {
 		Roll_assets_admin::add_script( 'roll-theme-options-script', 'theme-options.js', true );
 		Roll_assets_admin::add_script( 'roll-theme-options-ajax', 'ajax.js', true );
 	}
+
+	/*
+	 * Add links in admin bar
+	 */
+
+	public function add_in_admin_bar() {
+	    global $wp_admin_bar;
+	    $args = array(
+	        'id' => $this->optionsName,
+	        'title' => 'Theme options',
+            'href' => admin_url() . 'themes.php?page=theme-options'
+        );
+	    $wp_admin_bar->add_node($args);
+    }
 
 	/*
 	 * Add options
